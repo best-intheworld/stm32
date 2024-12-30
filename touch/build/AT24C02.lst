@@ -1,0 +1,638 @@
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"AT24C02.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Src/AT24C02.c"
+  18              		.section	.text.AT24C02_Init,"ax",%progbits
+  19              		.align	1
+  20              		.global	AT24C02_Init
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	AT24C02_Init:
+  26              	.LFB65:
+   1:Src/AT24C02.c **** #include "AT24C02.h"
+   2:Src/AT24C02.c **** 
+   3:Src/AT24C02.c **** /**
+   4:Src/AT24C02.c ****  * @brief       AT24C02初始化函数
+   5:Src/AT24C02.c ****  * @param       无
+   6:Src/AT24C02.c ****  * @retval      无
+   7:Src/AT24C02.c ****  */
+   8:Src/AT24C02.c **** void AT24C02_Init(void)
+   9:Src/AT24C02.c **** {
+  27              		.loc 1 9 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  10:Src/AT24C02.c ****     I2C_Init();
+  36              		.loc 1 10 5 view .LVU1
+  37 0002 FFF7FEFF 		bl	I2C_Init
+  38              	.LVL0:
+  11:Src/AT24C02.c **** }
+  39              		.loc 1 11 1 is_stmt 0 view .LVU2
+  40 0006 08BD     		pop	{r3, pc}
+  41              		.cfi_endproc
+  42              	.LFE65:
+  44              		.section	.text.AT24C02_receiveByte,"ax",%progbits
+  45              		.align	1
+  46              		.global	AT24C02_receiveByte
+  47              		.syntax unified
+  48              		.thumb
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s 			page 2
+
+
+  49              		.thumb_func
+  51              	AT24C02_receiveByte:
+  52              	.LVL1:
+  53              	.LFB66:
+  12:Src/AT24C02.c **** 
+  13:Src/AT24C02.c **** /**
+  14:Src/AT24C02.c ****  * @brief       AT24C02接收一字节函数
+  15:Src/AT24C02.c ****  * @param       addr：指定地址
+  16:Src/AT24C02.c ****  * @retval      接收到的一字节数据
+  17:Src/AT24C02.c ****  */
+  18:Src/AT24C02.c **** uint8_t AT24C02_receiveByte(uint8_t addr)
+  19:Src/AT24C02.c **** {
+  54              		.loc 1 19 1 is_stmt 1 view -0
+  55              		.cfi_startproc
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+  58              		.loc 1 19 1 is_stmt 0 view .LVU4
+  59 0000 38B5     		push	{r3, r4, r5, lr}
+  60              	.LCFI1:
+  61              		.cfi_def_cfa_offset 16
+  62              		.cfi_offset 3, -16
+  63              		.cfi_offset 4, -12
+  64              		.cfi_offset 5, -8
+  65              		.cfi_offset 14, -4
+  66 0002 0446     		mov	r4, r0
+  67 0004 0025     		movs	r5, #0
+  20:Src/AT24C02.c ****     uint8_t temp;
+  68              		.loc 1 20 5 is_stmt 1 view .LVU5
+  21:Src/AT24C02.c ****     uint8_t data;
+  69              		.loc 1 21 5 view .LVU6
+  22:Src/AT24C02.c ****     I2C_start();
+  70              		.loc 1 22 5 view .LVU7
+  71 0006 FFF7FEFF 		bl	I2C_start
+  72              	.LVL2:
+  23:Src/AT24C02.c ****     I2C_sendByte(0xA0);
+  73              		.loc 1 23 5 view .LVU8
+  74 000a A020     		movs	r0, #160
+  75 000c FFF7FEFF 		bl	I2C_sendByte
+  76              	.LVL3:
+  24:Src/AT24C02.c ****     temp = I2C_receiveACK();
+  77              		.loc 1 24 5 view .LVU9
+  78              		.loc 1 24 12 is_stmt 0 view .LVU10
+  79 0010 FFF7FEFF 		bl	I2C_receiveACK
+  80              	.LVL4:
+  25:Src/AT24C02.c ****     if(temp == 0)
+  81              		.loc 1 25 5 is_stmt 1 view .LVU11
+  82              		.loc 1 25 7 is_stmt 0 view .LVU12
+  83 0014 08B1     		cbz	r0, .L6
+  84              	.LVL5:
+  85              	.L4:
+  26:Src/AT24C02.c ****     {
+  27:Src/AT24C02.c ****         I2C_sendByte(addr);
+  28:Src/AT24C02.c ****         temp = I2C_receiveACK();
+  29:Src/AT24C02.c ****         if(temp == 0)
+  30:Src/AT24C02.c ****         {
+  31:Src/AT24C02.c ****             I2C_start();
+  32:Src/AT24C02.c ****             I2C_sendByte(0xA1);
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s 			page 3
+
+
+  33:Src/AT24C02.c ****             temp = I2C_receiveACK();
+  34:Src/AT24C02.c ****             if(temp == 0)
+  35:Src/AT24C02.c ****             {
+  36:Src/AT24C02.c ****                 data = I2C_receiveByte(1);
+  37:Src/AT24C02.c ****                 I2C_end();
+  38:Src/AT24C02.c ****             }
+  39:Src/AT24C02.c ****         }
+  40:Src/AT24C02.c ****     }
+  41:Src/AT24C02.c ****     return data;
+  86              		.loc 1 41 5 is_stmt 1 view .LVU13
+  42:Src/AT24C02.c **** }
+  87              		.loc 1 42 1 is_stmt 0 view .LVU14
+  88 0016 2846     		mov	r0, r5
+  89 0018 38BD     		pop	{r3, r4, r5, pc}
+  90              	.LVL6:
+  91              	.L6:
+  27:Src/AT24C02.c ****         temp = I2C_receiveACK();
+  92              		.loc 1 27 9 is_stmt 1 view .LVU15
+  93 001a 2046     		mov	r0, r4
+  94              	.LVL7:
+  27:Src/AT24C02.c ****         temp = I2C_receiveACK();
+  95              		.loc 1 27 9 is_stmt 0 view .LVU16
+  96 001c FFF7FEFF 		bl	I2C_sendByte
+  97              	.LVL8:
+  28:Src/AT24C02.c ****         if(temp == 0)
+  98              		.loc 1 28 9 is_stmt 1 view .LVU17
+  28:Src/AT24C02.c ****         if(temp == 0)
+  99              		.loc 1 28 16 is_stmt 0 view .LVU18
+ 100 0020 FFF7FEFF 		bl	I2C_receiveACK
+ 101              	.LVL9:
+  29:Src/AT24C02.c ****         {
+ 102              		.loc 1 29 9 is_stmt 1 view .LVU19
+  29:Src/AT24C02.c ****         {
+ 103              		.loc 1 29 11 is_stmt 0 view .LVU20
+ 104 0024 0028     		cmp	r0, #0
+ 105 0026 F6D1     		bne	.L4
+  31:Src/AT24C02.c ****             I2C_sendByte(0xA1);
+ 106              		.loc 1 31 13 is_stmt 1 view .LVU21
+ 107 0028 FFF7FEFF 		bl	I2C_start
+ 108              	.LVL10:
+  32:Src/AT24C02.c ****             temp = I2C_receiveACK();
+ 109              		.loc 1 32 13 view .LVU22
+ 110 002c A120     		movs	r0, #161
+ 111 002e FFF7FEFF 		bl	I2C_sendByte
+ 112              	.LVL11:
+  33:Src/AT24C02.c ****             if(temp == 0)
+ 113              		.loc 1 33 13 view .LVU23
+  33:Src/AT24C02.c ****             if(temp == 0)
+ 114              		.loc 1 33 20 is_stmt 0 view .LVU24
+ 115 0032 FFF7FEFF 		bl	I2C_receiveACK
+ 116              	.LVL12:
+  34:Src/AT24C02.c ****             {
+ 117              		.loc 1 34 13 is_stmt 1 view .LVU25
+  34:Src/AT24C02.c ****             {
+ 118              		.loc 1 34 15 is_stmt 0 view .LVU26
+ 119 0036 0028     		cmp	r0, #0
+ 120 0038 EDD1     		bne	.L4
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s 			page 4
+
+
+  36:Src/AT24C02.c ****                 I2C_end();
+ 121              		.loc 1 36 17 is_stmt 1 view .LVU27
+  36:Src/AT24C02.c ****                 I2C_end();
+ 122              		.loc 1 36 24 is_stmt 0 view .LVU28
+ 123 003a 0120     		movs	r0, #1
+ 124              	.LVL13:
+  36:Src/AT24C02.c ****                 I2C_end();
+ 125              		.loc 1 36 24 view .LVU29
+ 126 003c FFF7FEFF 		bl	I2C_receiveByte
+ 127              	.LVL14:
+ 128 0040 0546     		mov	r5, r0
+ 129              	.LVL15:
+  37:Src/AT24C02.c ****             }
+ 130              		.loc 1 37 17 is_stmt 1 view .LVU30
+ 131 0042 FFF7FEFF 		bl	I2C_end
+ 132              	.LVL16:
+ 133 0046 E6E7     		b	.L4
+ 134              		.cfi_endproc
+ 135              	.LFE66:
+ 137              		.section	.text.AT24C02_writeByte,"ax",%progbits
+ 138              		.align	1
+ 139              		.global	AT24C02_writeByte
+ 140              		.syntax unified
+ 141              		.thumb
+ 142              		.thumb_func
+ 144              	AT24C02_writeByte:
+ 145              	.LVL17:
+ 146              	.LFB67:
+  43:Src/AT24C02.c **** 
+  44:Src/AT24C02.c **** /**
+  45:Src/AT24C02.c ****  * @brief       AT24C02发送一字节函数
+  46:Src/AT24C02.c ****  * @param       addr：指定地址
+  47:Src/AT24C02.c ****  * @param       data:要发送的数据
+  48:Src/AT24C02.c ****  * @retval      无
+  49:Src/AT24C02.c ****  */
+  50:Src/AT24C02.c **** void AT24C02_writeByte(uint8_t addr, uint8_t data)
+  51:Src/AT24C02.c **** {
+ 147              		.loc 1 51 1 view -0
+ 148              		.cfi_startproc
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151              		.loc 1 51 1 is_stmt 0 view .LVU32
+ 152 0000 38B5     		push	{r3, r4, r5, lr}
+ 153              	.LCFI2:
+ 154              		.cfi_def_cfa_offset 16
+ 155              		.cfi_offset 3, -16
+ 156              		.cfi_offset 4, -12
+ 157              		.cfi_offset 5, -8
+ 158              		.cfi_offset 14, -4
+ 159 0002 0446     		mov	r4, r0
+ 160 0004 0D46     		mov	r5, r1
+  52:Src/AT24C02.c ****     uint8_t temp;
+ 161              		.loc 1 52 5 is_stmt 1 view .LVU33
+  53:Src/AT24C02.c ****     I2C_start();
+ 162              		.loc 1 53 5 view .LVU34
+ 163 0006 FFF7FEFF 		bl	I2C_start
+ 164              	.LVL18:
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s 			page 5
+
+
+  54:Src/AT24C02.c ****     I2C_sendByte(0xA0);
+ 165              		.loc 1 54 5 view .LVU35
+ 166 000a A020     		movs	r0, #160
+ 167 000c FFF7FEFF 		bl	I2C_sendByte
+ 168              	.LVL19:
+  55:Src/AT24C02.c ****     temp = I2C_receiveACK();
+ 169              		.loc 1 55 5 view .LVU36
+ 170              		.loc 1 55 12 is_stmt 0 view .LVU37
+ 171 0010 FFF7FEFF 		bl	I2C_receiveACK
+ 172              	.LVL20:
+  56:Src/AT24C02.c ****     if(temp == 0)
+ 173              		.loc 1 56 5 is_stmt 1 view .LVU38
+ 174              		.loc 1 56 7 is_stmt 0 view .LVU39
+ 175 0014 00B1     		cbz	r0, .L10
+ 176              	.LVL21:
+ 177              	.L7:
+  57:Src/AT24C02.c ****     {
+  58:Src/AT24C02.c ****         I2C_sendByte(addr);
+  59:Src/AT24C02.c ****         temp = I2C_receiveACK();
+  60:Src/AT24C02.c ****         if(temp == 0)
+  61:Src/AT24C02.c ****         {
+  62:Src/AT24C02.c ****             I2C_sendByte(data);
+  63:Src/AT24C02.c ****             temp = I2C_receiveACK();
+  64:Src/AT24C02.c ****             if(temp == 0)
+  65:Src/AT24C02.c ****             {
+  66:Src/AT24C02.c ****                 I2C_end();
+  67:Src/AT24C02.c ****                 delay_ms(10);
+  68:Src/AT24C02.c ****             }
+  69:Src/AT24C02.c ****         }
+  70:Src/AT24C02.c ****     }
+  71:Src/AT24C02.c **** }
+ 178              		.loc 1 71 1 view .LVU40
+ 179 0016 38BD     		pop	{r3, r4, r5, pc}
+ 180              	.LVL22:
+ 181              	.L10:
+  58:Src/AT24C02.c ****         temp = I2C_receiveACK();
+ 182              		.loc 1 58 9 is_stmt 1 view .LVU41
+ 183 0018 2046     		mov	r0, r4
+ 184              	.LVL23:
+  58:Src/AT24C02.c ****         temp = I2C_receiveACK();
+ 185              		.loc 1 58 9 is_stmt 0 view .LVU42
+ 186 001a FFF7FEFF 		bl	I2C_sendByte
+ 187              	.LVL24:
+  59:Src/AT24C02.c ****         if(temp == 0)
+ 188              		.loc 1 59 9 is_stmt 1 view .LVU43
+  59:Src/AT24C02.c ****         if(temp == 0)
+ 189              		.loc 1 59 16 is_stmt 0 view .LVU44
+ 190 001e FFF7FEFF 		bl	I2C_receiveACK
+ 191              	.LVL25:
+  60:Src/AT24C02.c ****         {
+ 192              		.loc 1 60 9 is_stmt 1 view .LVU45
+  60:Src/AT24C02.c ****         {
+ 193              		.loc 1 60 11 is_stmt 0 view .LVU46
+ 194 0022 0028     		cmp	r0, #0
+ 195 0024 F7D1     		bne	.L7
+  62:Src/AT24C02.c ****             temp = I2C_receiveACK();
+ 196              		.loc 1 62 13 is_stmt 1 view .LVU47
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s 			page 6
+
+
+ 197 0026 2846     		mov	r0, r5
+ 198              	.LVL26:
+  62:Src/AT24C02.c ****             temp = I2C_receiveACK();
+ 199              		.loc 1 62 13 is_stmt 0 view .LVU48
+ 200 0028 FFF7FEFF 		bl	I2C_sendByte
+ 201              	.LVL27:
+  63:Src/AT24C02.c ****             if(temp == 0)
+ 202              		.loc 1 63 13 is_stmt 1 view .LVU49
+  63:Src/AT24C02.c ****             if(temp == 0)
+ 203              		.loc 1 63 20 is_stmt 0 view .LVU50
+ 204 002c FFF7FEFF 		bl	I2C_receiveACK
+ 205              	.LVL28:
+  64:Src/AT24C02.c ****             {
+ 206              		.loc 1 64 13 is_stmt 1 view .LVU51
+  64:Src/AT24C02.c ****             {
+ 207              		.loc 1 64 15 is_stmt 0 view .LVU52
+ 208 0030 0028     		cmp	r0, #0
+ 209 0032 F0D1     		bne	.L7
+  66:Src/AT24C02.c ****                 delay_ms(10);
+ 210              		.loc 1 66 17 is_stmt 1 view .LVU53
+ 211 0034 FFF7FEFF 		bl	I2C_end
+ 212              	.LVL29:
+  67:Src/AT24C02.c ****             }
+ 213              		.loc 1 67 17 view .LVU54
+ 214 0038 0A20     		movs	r0, #10
+ 215 003a FFF7FEFF 		bl	delay_ms
+ 216              	.LVL30:
+ 217              		.loc 1 71 1 is_stmt 0 view .LVU55
+ 218 003e EAE7     		b	.L7
+ 219              		.cfi_endproc
+ 220              	.LFE67:
+ 222              		.section	.text.AT24C02_check,"ax",%progbits
+ 223              		.align	1
+ 224              		.global	AT24C02_check
+ 225              		.syntax unified
+ 226              		.thumb
+ 227              		.thumb_func
+ 229              	AT24C02_check:
+ 230              	.LFB68:
+  72:Src/AT24C02.c **** 
+  73:Src/AT24C02.c **** /**
+  74:Src/AT24C02.c ****  * @brief       检查AT24C02是否工作正常
+  75:Src/AT24C02.c ****  * @param       无
+  76:Src/AT24C02.c ****  * @retval      0：正常；1：不正常
+  77:Src/AT24C02.c ****  */
+  78:Src/AT24C02.c **** uint8_t AT24C02_check(void)
+  79:Src/AT24C02.c **** {
+ 231              		.loc 1 79 1 is_stmt 1 view -0
+ 232              		.cfi_startproc
+ 233              		@ args = 0, pretend = 0, frame = 0
+ 234              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235 0000 08B5     		push	{r3, lr}
+ 236              	.LCFI3:
+ 237              		.cfi_def_cfa_offset 8
+ 238              		.cfi_offset 3, -8
+ 239              		.cfi_offset 14, -4
+  80:Src/AT24C02.c ****     uint8_t temp;
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s 			page 7
+
+
+ 240              		.loc 1 80 5 view .LVU57
+  81:Src/AT24C02.c ****     temp = AT24C02_receiveByte(AT24C02);
+ 241              		.loc 1 81 5 view .LVU58
+ 242              		.loc 1 81 12 is_stmt 0 view .LVU59
+ 243 0002 FF20     		movs	r0, #255
+ 244 0004 FFF7FEFF 		bl	AT24C02_receiveByte
+ 245              	.LVL31:
+  82:Src/AT24C02.c ****     if(temp == 0x55)
+ 246              		.loc 1 82 5 is_stmt 1 view .LVU60
+ 247              		.loc 1 82 7 is_stmt 0 view .LVU61
+ 248 0008 5528     		cmp	r0, #85
+ 249 000a 0DD0     		beq	.L13
+  83:Src/AT24C02.c ****     {
+  84:Src/AT24C02.c ****         return 0;
+  85:Src/AT24C02.c ****     }
+  86:Src/AT24C02.c ****     else
+  87:Src/AT24C02.c ****     {
+  88:Src/AT24C02.c ****         AT24C02_writeByte(AT24C02,0x55);
+ 250              		.loc 1 88 9 is_stmt 1 view .LVU62
+ 251 000c 5521     		movs	r1, #85
+ 252 000e FF20     		movs	r0, #255
+ 253              	.LVL32:
+ 254              		.loc 1 88 9 is_stmt 0 view .LVU63
+ 255 0010 FFF7FEFF 		bl	AT24C02_writeByte
+ 256              	.LVL33:
+  89:Src/AT24C02.c ****         delay_ms(10);
+ 257              		.loc 1 89 9 is_stmt 1 view .LVU64
+ 258 0014 0A20     		movs	r0, #10
+ 259 0016 FFF7FEFF 		bl	delay_ms
+ 260              	.LVL34:
+  90:Src/AT24C02.c ****         temp = AT24C02_receiveByte(AT24C02);
+ 261              		.loc 1 90 9 view .LVU65
+ 262              		.loc 1 90 16 is_stmt 0 view .LVU66
+ 263 001a FF20     		movs	r0, #255
+ 264 001c FFF7FEFF 		bl	AT24C02_receiveByte
+ 265              	.LVL35:
+  91:Src/AT24C02.c ****         if(temp == 0x55)
+ 266              		.loc 1 91 9 is_stmt 1 view .LVU67
+ 267              		.loc 1 91 11 is_stmt 0 view .LVU68
+ 268 0020 5528     		cmp	r0, #85
+ 269 0022 03D0     		beq	.L14
+  92:Src/AT24C02.c ****         {
+  93:Src/AT24C02.c ****             return 0;
+  94:Src/AT24C02.c ****         }
+  95:Src/AT24C02.c ****     }
+  96:Src/AT24C02.c ****     return 1;
+ 270              		.loc 1 96 12 view .LVU69
+ 271 0024 0120     		movs	r0, #1
+ 272              	.LVL36:
+ 273              	.L12:
+  97:Src/AT24C02.c **** }
+ 274              		.loc 1 97 1 view .LVU70
+ 275 0026 08BD     		pop	{r3, pc}
+ 276              	.LVL37:
+ 277              	.L13:
+  84:Src/AT24C02.c ****     }
+ 278              		.loc 1 84 16 view .LVU71
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s 			page 8
+
+
+ 279 0028 0020     		movs	r0, #0
+ 280              	.LVL38:
+  84:Src/AT24C02.c ****     }
+ 281              		.loc 1 84 16 view .LVU72
+ 282 002a FCE7     		b	.L12
+ 283              	.LVL39:
+ 284              	.L14:
+  93:Src/AT24C02.c ****         }
+ 285              		.loc 1 93 20 view .LVU73
+ 286 002c 0020     		movs	r0, #0
+ 287              	.LVL40:
+  93:Src/AT24C02.c ****         }
+ 288              		.loc 1 93 20 view .LVU74
+ 289 002e FAE7     		b	.L12
+ 290              		.cfi_endproc
+ 291              	.LFE68:
+ 293              		.section	.text.AT24C02_read,"ax",%progbits
+ 294              		.align	1
+ 295              		.global	AT24C02_read
+ 296              		.syntax unified
+ 297              		.thumb
+ 298              		.thumb_func
+ 300              	AT24C02_read:
+ 301              	.LVL41:
+ 302              	.LFB69:
+  98:Src/AT24C02.c **** 
+  99:Src/AT24C02.c **** /**
+ 100:Src/AT24C02.c ****  * @brief       在AT24CXX里面的指定地址开始读出指定个数的数据
+ 101:Src/AT24C02.c ****  * @param       addr    : 开始读出的地址 对24c02为0~255
+ 102:Src/AT24C02.c ****  * @param       pbuf    : 数据数组首地址
+ 103:Src/AT24C02.c ****  * @param       datalength : 要读出数据的个数
+ 104:Src/AT24C02.c ****  * @retval      无
+ 105:Src/AT24C02.c ****  */
+ 106:Src/AT24C02.c **** void AT24C02_read(uint16_t addr, uint8_t *pbuf, uint16_t datalength)
+ 107:Src/AT24C02.c **** {
+ 303              		.loc 1 107 1 is_stmt 1 view -0
+ 304              		.cfi_startproc
+ 305              		@ args = 0, pretend = 0, frame = 0
+ 306              		@ frame_needed = 0, uses_anonymous_args = 0
+ 307              		.loc 1 107 1 is_stmt 0 view .LVU76
+ 308 0000 70B5     		push	{r4, r5, r6, lr}
+ 309              	.LCFI4:
+ 310              		.cfi_def_cfa_offset 16
+ 311              		.cfi_offset 4, -16
+ 312              		.cfi_offset 5, -12
+ 313              		.cfi_offset 6, -8
+ 314              		.cfi_offset 14, -4
+ 315 0002 0C46     		mov	r4, r1
+ 108:Src/AT24C02.c ****     while(datalength--)
+ 316              		.loc 1 108 5 is_stmt 1 view .LVU77
+ 317              		.loc 1 108 10 is_stmt 0 view .LVU78
+ 318 0004 08E0     		b	.L17
+ 319              	.LVL42:
+ 320              	.L18:
+ 109:Src/AT24C02.c ****     {
+ 110:Src/AT24C02.c ****         *pbuf++ = AT24C02_receiveByte(addr++);
+ 321              		.loc 1 110 9 is_stmt 1 view .LVU79
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s 			page 9
+
+
+ 322              		.loc 1 110 43 is_stmt 0 view .LVU80
+ 323 0006 461C     		adds	r6, r0, #1
+ 324 0008 B6B2     		uxth	r6, r6
+ 325              	.LVL43:
+ 326              		.loc 1 110 19 view .LVU81
+ 327 000a C0B2     		uxtb	r0, r0
+ 328 000c FFF7FEFF 		bl	AT24C02_receiveByte
+ 329              	.LVL44:
+ 330              		.loc 1 110 17 discriminator 1 view .LVU82
+ 331 0010 04F8010B 		strb	r0, [r4], #1
+ 332              	.LVL45:
+ 108:Src/AT24C02.c ****     while(datalength--)
+ 333              		.loc 1 108 21 view .LVU83
+ 334 0014 2A46     		mov	r2, r5
+ 335              		.loc 1 110 43 view .LVU84
+ 336 0016 3046     		mov	r0, r6
+ 337              	.LVL46:
+ 338              	.L17:
+ 108:Src/AT24C02.c ****     while(datalength--)
+ 339              		.loc 1 108 11 is_stmt 1 view .LVU85
+ 108:Src/AT24C02.c ****     while(datalength--)
+ 340              		.loc 1 108 21 is_stmt 0 view .LVU86
+ 341 0018 531E     		subs	r3, r2, #1
+ 342 001a 9DB2     		uxth	r5, r3
+ 343              	.LVL47:
+ 108:Src/AT24C02.c ****     while(datalength--)
+ 344              		.loc 1 108 11 view .LVU87
+ 345 001c 002A     		cmp	r2, #0
+ 346 001e F2D1     		bne	.L18
+ 111:Src/AT24C02.c ****     }
+ 112:Src/AT24C02.c **** }
+ 347              		.loc 1 112 1 view .LVU88
+ 348 0020 70BD     		pop	{r4, r5, r6, pc}
+ 349              		.loc 1 112 1 view .LVU89
+ 350              		.cfi_endproc
+ 351              	.LFE69:
+ 353              		.section	.text.AT24C02_write,"ax",%progbits
+ 354              		.align	1
+ 355              		.global	AT24C02_write
+ 356              		.syntax unified
+ 357              		.thumb
+ 358              		.thumb_func
+ 360              	AT24C02_write:
+ 361              	.LVL48:
+ 362              	.LFB70:
+ 113:Src/AT24C02.c **** 
+ 114:Src/AT24C02.c **** /**
+ 115:Src/AT24C02.c ****  * @brief       在AT24CXX里面的指定地址开始写入指定个数的数据
+ 116:Src/AT24C02.c ****  * @param       addr    : 开始写入的地址 对24c02为0~255
+ 117:Src/AT24C02.c ****  * @param       pbuf    : 数据数组首地址
+ 118:Src/AT24C02.c ****  * @param       datalength : 要写入数据的个数
+ 119:Src/AT24C02.c ****  * @retval      无
+ 120:Src/AT24C02.c ****  */
+ 121:Src/AT24C02.c **** void AT24C02_write(uint16_t addr, uint8_t *pbuf, uint16_t datalength)
+ 122:Src/AT24C02.c **** {
+ 363              		.loc 1 122 1 is_stmt 1 view -0
+ 364              		.cfi_startproc
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s 			page 10
+
+
+ 365              		@ args = 0, pretend = 0, frame = 0
+ 366              		@ frame_needed = 0, uses_anonymous_args = 0
+ 367              		.loc 1 122 1 is_stmt 0 view .LVU91
+ 368 0000 70B5     		push	{r4, r5, r6, lr}
+ 369              	.LCFI5:
+ 370              		.cfi_def_cfa_offset 16
+ 371              		.cfi_offset 4, -16
+ 372              		.cfi_offset 5, -12
+ 373              		.cfi_offset 6, -8
+ 374              		.cfi_offset 14, -4
+ 375 0002 0446     		mov	r4, r0
+ 376 0004 0E46     		mov	r6, r1
+ 123:Src/AT24C02.c ****     while (datalength--)
+ 377              		.loc 1 123 5 is_stmt 1 view .LVU92
+ 378              		.loc 1 123 11 is_stmt 0 view .LVU93
+ 379 0006 07E0     		b	.L21
+ 380              	.LVL49:
+ 381              	.L22:
+ 124:Src/AT24C02.c ****     {
+ 125:Src/AT24C02.c ****         AT24C02_writeByte(addr, *pbuf);
+ 382              		.loc 1 125 9 is_stmt 1 view .LVU94
+ 383 0008 16F8011B 		ldrb	r1, [r6], #1	@ zero_extendqisi2
+ 384              	.LVL50:
+ 385              		.loc 1 125 9 is_stmt 0 view .LVU95
+ 386 000c E0B2     		uxtb	r0, r4
+ 387 000e FFF7FEFF 		bl	AT24C02_writeByte
+ 388              	.LVL51:
+ 126:Src/AT24C02.c ****         addr++;
+ 389              		.loc 1 126 9 is_stmt 1 view .LVU96
+ 390              		.loc 1 126 13 is_stmt 0 view .LVU97
+ 391 0012 0134     		adds	r4, r4, #1
+ 392              	.LVL52:
+ 393              		.loc 1 126 13 view .LVU98
+ 394 0014 A4B2     		uxth	r4, r4
+ 395              	.LVL53:
+ 127:Src/AT24C02.c ****         pbuf++;
+ 396              		.loc 1 127 9 is_stmt 1 view .LVU99
+ 123:Src/AT24C02.c ****     {
+ 397              		.loc 1 123 22 is_stmt 0 view .LVU100
+ 398 0016 2A46     		mov	r2, r5
+ 399              	.LVL54:
+ 400              	.L21:
+ 123:Src/AT24C02.c ****     {
+ 401              		.loc 1 123 12 is_stmt 1 view .LVU101
+ 123:Src/AT24C02.c ****     {
+ 402              		.loc 1 123 22 is_stmt 0 view .LVU102
+ 403 0018 531E     		subs	r3, r2, #1
+ 404 001a 9DB2     		uxth	r5, r3
+ 405              	.LVL55:
+ 123:Src/AT24C02.c ****     {
+ 406              		.loc 1 123 12 view .LVU103
+ 407 001c 002A     		cmp	r2, #0
+ 408 001e F3D1     		bne	.L22
+ 128:Src/AT24C02.c ****     }
+ 129:Src/AT24C02.c **** }
+ 409              		.loc 1 129 1 view .LVU104
+ 410 0020 70BD     		pop	{r4, r5, r6, pc}
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s 			page 11
+
+
+ 411              		.loc 1 129 1 view .LVU105
+ 412              		.cfi_endproc
+ 413              	.LFE70:
+ 415              		.text
+ 416              	.Letext0:
+ 417              		.file 2 "D:/toolchain/gcc/xpack-arm-none-eabi-gcc-13.2.1-1.1-win32-x64/xpack-arm-none-eabi-gcc-13.
+ 418              		.file 3 "D:/toolchain/gcc/xpack-arm-none-eabi-gcc-13.2.1-1.1-win32-x64/xpack-arm-none-eabi-gcc-13.
+ 419              		.file 4 "Inc/delay.h"
+ 420              		.file 5 "Inc/I2C.h"
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 AT24C02.c
+C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s:19     .text.AT24C02_Init:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s:25     .text.AT24C02_Init:00000000 AT24C02_Init
+C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s:45     .text.AT24C02_receiveByte:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s:51     .text.AT24C02_receiveByte:00000000 AT24C02_receiveByte
+C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s:138    .text.AT24C02_writeByte:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s:144    .text.AT24C02_writeByte:00000000 AT24C02_writeByte
+C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s:223    .text.AT24C02_check:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s:229    .text.AT24C02_check:00000000 AT24C02_check
+C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s:294    .text.AT24C02_read:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s:300    .text.AT24C02_read:00000000 AT24C02_read
+C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s:354    .text.AT24C02_write:00000000 $t
+C:\Users\ADMINI~1\AppData\Local\Temp\ccEO48TD.s:360    .text.AT24C02_write:00000000 AT24C02_write
+
+UNDEFINED SYMBOLS
+I2C_Init
+I2C_start
+I2C_sendByte
+I2C_receiveACK
+I2C_receiveByte
+I2C_end
+delay_ms

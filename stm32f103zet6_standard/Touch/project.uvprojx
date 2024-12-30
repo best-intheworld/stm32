@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>project</OutputName>
+          <OutputName>Touch</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Core;.\User;.\STM32F10x_FWLib\inc;.\Bsp\key;.\Bsp\led;.\Bsp\Serial;.\Bsp\lcd;.\Bsp\touch</IncludePath>
+              <IncludePath>.\Core;.\User;.\STM32F10x_FWLib\inc;.\Bsp\key;.\Bsp\led;.\Bsp\Serial;.\Bsp\lcd;.\Bsp\at24c02;.\Bsp\touch</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -403,6 +403,11 @@
               <FileName>Delay.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\User\Delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>I2C.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\I2C.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -563,6 +568,11 @@
               <FileName>lcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Bsp\lcd\lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>at24c02.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Bsp\at24c02\at24c02.c</FilePath>
             </File>
             <File>
               <FileName>touch.c</FileName>

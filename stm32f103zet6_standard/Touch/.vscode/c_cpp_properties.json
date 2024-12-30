@@ -10,6 +10,7 @@
                 "g:\\stm32f103zet6_standard\\Touch\\Bsp\\led",
                 "g:\\stm32f103zet6_standard\\Touch\\Bsp\\Serial",
                 "g:\\stm32f103zet6_standard\\Touch\\Bsp\\lcd",
+                "g:\\stm32f103zet6_standard\\Touch\\Bsp\\at24c02",
                 "g:\\stm32f103zet6_standard\\Touch\\Bsp\\touch",
                 "D:\\Keil_v5\\ARM\\ARMCC\\include",
                 "D:\\Keil_v5\\ARM\\ARMCC\\include\\rw",
