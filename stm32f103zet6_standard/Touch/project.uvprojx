@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Core;.\User;.\STM32F10x_FWLib\inc;.\Bsp\key;.\Bsp\led;.\Bsp\Serial;.\Bsp\lcd;.\Bsp\at24c02;.\Bsp\touch</IncludePath>
+              <IncludePath>.\Core;.\User;.\STM32F10x_FWLib\inc;.\Bsp\key;.\Bsp\led;.\Bsp\Serial;.\Bsp\lcd;.\Bsp\at24c02;.\Bsp\touch;.\Bsp\timer</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -578,6 +578,11 @@
               <FileName>touch.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Bsp\touch\touch.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Bsp\timer\timer.c</FilePath>
             </File>
           </Files>
         </Group>

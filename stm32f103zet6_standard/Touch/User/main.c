@@ -5,9 +5,66 @@
 #include "Serial.h"
 #include "lcd.h"
 #include "at24c02.h"
+#include "touch.h"
 
-const uint8_t g_text_buf[] = {"STM32 IIC TEST"};
-#define TEXT_SIZE       sizeof(g_text_buf)  /* TEXT字符串长度 */
+/**
+ * @brief       清空屏幕并在右上角显示"RST"
+ * @param       无
+ * @retval      无
+ */
+void load_draw_dialog(void)
+{
+  LCD_clear(WHITE);                                                /* 清屏 */
+  LCD_showString(width - 24, 0, 16, BLUE, WHITE, "RST"); /* 显示清屏区域 */
+}
+
+/**
+ * @brief       电阻触摸屏测试函数
+ * @param       无
+ * @retval      无
+ */
+void rtp_test(void)
+{
+  uint8_t keynum;
+  uint8_t i = 0;
+
+  while (1)
+  {
+    keynum = Key_getValue();
+    touch_dev.scan(0);
+
+    if (touch_dev.sta & TP_PRES_DOWN)  /* 触摸屏被按下 */
+    {
+      if (touch_dev.x[0] < width && touch_dev.y[0] < length)
+      {
+        if (touch_dev.x[0] > (width - 24) && touch_dev.y[0] < 16)
+        {
+          load_draw_dialog(); /* 清除 */
+        }
+        else 
+        {
+          touch_drawBigPoint(touch_dev.x[0], touch_dev.y[0], RED);   /* 画点 */
+        }
+      }
+    }
+    else 
+    {
+      delay_ms(10);       /* 没有按键按下的时候 */
+    }
+    
+    if (keynum == 4)   /* KEY0按下,则执行校准程序 */
+    {
+      LCD_clear(WHITE);   /* 清屏 */
+      touchAdjust();        /* 屏幕校准 */
+      touch_saveAdjustData();
+      load_draw_dialog();
+    }
+
+    i++;
+
+    if (i % 20 == 0)LED_Toggle(GPIOB, GPIO_Pin_5);
+  }
+}
 
 int main(void)
 {
@@ -17,41 +74,12 @@ int main(void)
 	Serial_Init();
 	LCD_Init();
 	AT24C02_Init();
-
+	touch_dev.init();
 	LCD_showString(30, 50, 16, RED, WHITE, "STM32");
-	LCD_showString(30, 70, 16, RED, WHITE, "IIC TEST");
+	LCD_showString(30, 70, 16, RED, WHITE, "TOUCH TEST");
 	LCD_showString(30, 90, 16, RED, WHITE, "ATOM@ALIENTEK");
-	LCD_showString(30, 110, 16, RED, WHITE, "KEY1:Write  KEY0:Read");
-	while(AT24C02_check())
-	{
-		LCD_showString(30, 130, 16, RED, WHITE, "24C02 Check Failed!");
-		delay_ms(300);
-		LCD_showString(30, 130, 16, RED, WHITE, "Please Check!      ");
-		delay_ms(300);
-		LED_Toggle(GPIOB, GPIO_Pin_5);
-	}
-	LCD_showString(30, 130, 16, RED, WHITE, "24C02 Ready!");
-	uint8_t keynum;
-	uint8_t datatemp[TEXT_SIZE];
-	memset(datatemp, 0, TEXT_SIZE);
-	while(1)
-	{
-		keynum = Key_getValue();
-		if(keynum == 3)
-		{
-			LCD_fillRectangle(0, 150, 239, 319, WHITE);
-			LCD_showString(30, 150, 16, BLUE, WHITE, "Start Write 24C02....");
-			AT24C02_write(0, (uint8_t *)g_text_buf, TEXT_SIZE);
-			LCD_showString(30, 150, 16, BLUE, WHITE, "24C02 Write Finished!");
-		}
-		if(keynum == 4)
-		{
-			LCD_showString(30, 150, 16, BLUE, WHITE, "Start Read 24C02.... ");
-			AT24C02_read(0, datatemp, TEXT_SIZE);
-			LCD_showString(30, 150, 16, BLUE, WHITE, "The Data Readed Is:  ");
-			LCD_showString(30, 170, 16, BLUE, WHITE, (char *)datatemp);
-		}
-		LED_Toggle(GPIOE, GPIO_Pin_5);
-		delay_ms(200);
-	}
+	LCD_showString(30, 110, 16, RED, WHITE, "Press KEY0 to Adjust"); /* 电阻屏才显示 */
+	delay_ms(1500);
+	load_draw_dialog();
+	rtp_test(); /* 电阻屏测试 */
 } 

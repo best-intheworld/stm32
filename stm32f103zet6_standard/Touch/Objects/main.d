@@ -39,3 +39,5 @@
 .\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\main.o: .\Bsp\at24c02\at24c02.h
 .\objects\main.o: .\User\I2C.h
+.\objects\main.o: .\Bsp\touch\touch.h
+.\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
