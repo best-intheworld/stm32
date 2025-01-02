@@ -1,0 +1,27 @@
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'LVGL'
+compiling lv_port_disp_template.c...
+.\LVGL\GUI\lvgl/src/misc/lv_printf.h(81): warning:  #1362-D: unrecognized format function type "gnu_printf" ignored
+  int  lv_snprintf(char * buffer, size_t count, const char * format, ...) LV_FORMAT_ATTRIBUTE(3, 4);
+.\LVGL\GUI\lvgl/src/misc/lv_printf.h(82): warning:  #1362-D: unrecognized format function type "gnu_printf" ignored
+  int lv_vsnprintf(char * buffer, size_t count, const char * format, va_list va) LV_FORMAT_ATTRIBUTE(3, 0);
+.\LVGL\GUI\lvgl/src/hal/../draw/../misc/lv_txt.h(147): warning:  #1362-D: unrecognized format function type "gnu_printf" ignored
+  char * _lv_txt_set_text_vfmt(const char * fmt, va_list ap) LV_FORMAT_ATTRIBUTE(1, 0);
+.\LVGL\GUI\lvgl/src/widgets/lv_label.h(109): warning:  #1362-D: unrecognized format function type "gnu_printf" ignored
+  void lv_label_set_text_fmt(lv_obj_t * obj, const char * fmt, ...) LV_FORMAT_ATTRIBUTE(2, 3);
+LVGL\GUI\lvgl\examples\porting\lv_port_disp_template.c: 4 warnings, 0 errors
+compiling main.c...
+.\LVGL\GUI\lvgl\src/misc/lv_printf.h(81): warning:  #1362-D: unrecognized format function type "gnu_printf" ignored
+  int  lv_snprintf(char * buffer, size_t count, const char * format, ...) LV_FORMAT_ATTRIBUTE(3, 4);
+.\LVGL\GUI\lvgl\src/misc/lv_printf.h(82): warning:  #1362-D: unrecognized format function type "gnu_printf" ignored
+  int lv_vsnprintf(char * buffer, size_t count, const char * format, va_list va) LV_FORMAT_ATTRIBUTE(3, 0);
+.\LVGL\GUI\lvgl\src/hal/../draw/../misc/lv_txt.h(147): warning:  #1362-D: unrecognized format function type "gnu_printf" ignored
+  char * _lv_txt_set_text_vfmt(const char * fmt, va_list ap) LV_FORMAT_ATTRIBUTE(1, 0);
+.\LVGL\GUI\lvgl\src/widgets/lv_label.h(109): warning:  #1362-D: unrecognized format function type "gnu_printf" ignored
+  void lv_label_set_text_fmt(lv_obj_t * obj, const char * fmt, ...) LV_FORMAT_ATTRIBUTE(2, 3);
+User\main.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=198654 RO-data=30462 RW-data=604 ZI-data=59620  
+FromELF: creating hex file...
+".\Objects\LVGL.axf" - 0 Error(s), 8 Warning(s).
+Build Time Elapsed:  00:00:13
