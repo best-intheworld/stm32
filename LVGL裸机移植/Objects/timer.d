@@ -151,3 +151,4 @@
 .\objects\timer.o: .\LVGL\GUI\lvgl\src/extra/libs/freetype/lv_freetype.h
 .\objects\timer.o: .\LVGL\GUI\lvgl\src/extra/libs/rlottie/lv_rlottie.h
 .\objects\timer.o: .\LVGL\GUI\lvgl\src/extra/libs/ffmpeg/lv_ffmpeg.h
+.\objects\timer.o: .\Bsp\led\led.h

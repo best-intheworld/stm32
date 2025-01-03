@@ -112,6 +112,8 @@
                 "g:\\stm32f103zet6_standard\\LVGL裸机移植\\LVGL\\GUI\\lvgl",
                 "g:\\stm32f103zet6_standard\\LVGL裸机移植\\LVGL\\GUI\\lvgl\\src",
                 "g:\\stm32f103zet6_standard\\LVGL裸机移植\\LVGL\\GUI\\lvgl\\examples\\porting",
+                "g:\\stm32f103zet6_standard\\LVGL裸机移植\\LVGL\\GUI_APP\\demos",
+                "g:\\stm32f103zet6_standard\\LVGL裸机移植\\LVGL\\GUI_APP\\demos\\music",
                 "D:\\Keil_v5\\ARM\\ARMCC\\include",
                 "D:\\Keil_v5\\ARM\\ARMCC\\include\\rw",
                 "g:\\stm32f103zet6_standard\\LVGL裸机移植\\STM32F10x_FWLib\\src",
@@ -149,7 +151,8 @@
                 "g:\\stm32f103zet6_standard\\LVGL裸机移植\\LVGL\\GUI\\lvgl\\src\\draw\\sdl",
                 "g:\\stm32f103zet6_standard\\LVGL裸机移植\\LVGL\\GUI\\lvgl\\src\\hal",
                 "g:\\stm32f103zet6_standard\\LVGL裸机移植\\LVGL\\GUI\\lvgl\\src\\misc",
-                "g:\\stm32f103zet6_standard\\LVGL裸机移植\\LVGL\\GUI\\lvgl\\src\\widgets"
+                "g:\\stm32f103zet6_standard\\LVGL裸机移植\\LVGL\\GUI\\lvgl\\src\\widgets",
+                "g:\\stm32f103zet6_standard\\LVGL裸机移植\\LVGL\\GUI_APP\\demos\\music\\assets"
             ],
             "defines": [
                 "STM32F10X_HD",

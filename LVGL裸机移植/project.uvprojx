@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -314,7 +314,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Core;.\User;.\STM32F10x_FWLib\inc;.\Bsp\key;.\Bsp\led;.\Bsp\Serial;.\Bsp\lcd;.\Bsp\at24c02;.\Bsp\touch;.\Bsp\timer;.\LVGL\GUI;.\LVGL\GUI\lvgl;.\LVGL\GUI\lvgl\src;.\LVGL\GUI\lvgl\examples\porting</IncludePath>
+              <IncludePath>.\Core;.\User;.\STM32F10x_FWLib\inc;.\Bsp\key;.\Bsp\led;.\Bsp\Serial;.\Bsp\lcd;.\Bsp\at24c02;.\Bsp\touch;.\Bsp\timer;.\LVGL\GUI;.\LVGL\GUI\lvgl;.\LVGL\GUI\lvgl\src;.\LVGL\GUI\lvgl\examples\porting;.\LVGL\GUI_APP\demos;.\LVGL\GUI_APP\demos\music</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
