@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "touch.h": "c",
+        "timer.h": "c"
+    }
+}
